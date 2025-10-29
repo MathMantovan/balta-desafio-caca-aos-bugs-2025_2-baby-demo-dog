@@ -19,7 +19,7 @@ public class GetCustomerByIdHandler : IRequestHandler<GetCustomerByIdRequest, Ge
     {
         var customer = await _appDbContext.Customers
             .AsNoTracking()
-            .Where(x => x.Id == request.Id)
+            .Where(x => x.Id == request.id)
             .Select(p => new GetCustomerByIdResponse(p.Id, p.Name, p.Email, p.Phone, p.BirthDate))
             .FirstOrDefaultAsync(cancellationToken);
 

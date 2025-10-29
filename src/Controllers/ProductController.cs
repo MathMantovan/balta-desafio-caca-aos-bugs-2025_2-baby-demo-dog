@@ -1,4 +1,3 @@
-
 using BugStore.Commands.Products;
 using BugStore.Requests.Products;
 using MediatR;
@@ -26,7 +25,7 @@ namespace BugStore.Controllers
         }
 
 
-        [HttpGet("/v1/products{id:guid}")]
+        [HttpGet("/v1/products/{id:guid}")]
         public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id)
         {
             var request = new GetProductByIdRequest(id);
@@ -45,7 +44,7 @@ namespace BugStore.Controllers
         }
 
 
-        [HttpPut("/v1/products{id:guid}")]
+        [HttpPut("/v1/products/{id:guid}")]
         public async Task<IActionResult> PutAsync([FromRoute] Guid id, [FromBody] UpdateProductRequest productRequest)
         {
             var request = new UpdateProductCommand(id, productRequest);
@@ -57,7 +56,7 @@ namespace BugStore.Controllers
         }
 
 
-        [HttpDelete("/v1/products{id:guid}")]
+        [HttpDelete("/v1/products/{id:guid}")]
         public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
         {
             var request = new DeleteProductRequest(id);

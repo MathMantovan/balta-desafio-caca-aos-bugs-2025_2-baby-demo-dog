@@ -1,9 +1,10 @@
 using BugStore.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace BugStore.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
     public DbSet<Customer> Customers { get; set; } = null!;
     public DbSet<Product> Products { get; set; } = null!;
